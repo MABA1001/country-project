@@ -12,8 +12,9 @@ function App() {
   const [Countries, setCountries]=useState([]);
   let [filterText, setFilterText]=useState("Select by Region");
   const [result,setResult]=useState([]);
-  const pageCount=10;
-  const itemsPerPage=8;
+  const[page,setPage]=useState(1);
+
+
 
   let filteredCountries= Countries.filter((country)=>{
     if(filterText==="Americas")
@@ -48,15 +49,20 @@ function App() {
 
   useEffect(() => {
     getCountries();
-  },[itemsPerPage]);
+  },[]);
 
   function onFilteredValueSelected(filteredValue){
     setFilterText(filteredValue);
+    setPage(1);
   }
 
-  function handlePageClick(data) // pagination handeling
+  function selectPageHandeler(value)
   {
-    console.log(data.selected);
+    if(value>=1&& Math.ceil(value<=filteredCountries.length/12))
+    {
+      setPage(value);
+    }
+    
   }
   return (
     <>
@@ -68,29 +74,17 @@ function App() {
       </div>
       {result.slice(0,3).map(country=><SearchResult countryInfo={country} key={country.name.common}/>)}
       <div className="row">
-      {filteredCountries.map(country=><CountryCard countryInfo={country} key={country.name.common}/>)}
+      {filteredCountries.slice(page*12-12,page*12).map(country=><CountryCard countryInfo={country} key={country.name.common}/>)}
+      </div>
+      <div className="pagination">{/*pagination here*/}
+        <span onClick={()=>selectPageHandeler(page-1)}>◀️</span>
+        {[...Array(Math.floor(filteredCountries.length/12))].map((_,i)=>{
+          return<span className={page===i+1?"active":""} onClick={()=>selectPageHandeler(i+1)} key={i}>{i+1}</span>;
+        })}
+        <span onClick={()=>selectPageHandeler(page+1)}>▶️</span> 
       </div>
     </div>
-    {/* <ReactPaginate breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={2}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-        containerClassName={'pagination justify-content-center'}
-        pageClassName={'page-item'}
-        pageLinkClassName={'page-link'}
-        previousClassName={'page-item'}
-        previousLinkClassName={'page-link'}
-        nextClassName={'page-item'}
-        nextLinkClassName={'page-link'}
-        breakClassName={'page-item'}
-        breakLinkClassName={'page-link'}
-        activeClassName={'active'}
-        /> */}
     </>
   )
 }
-
 export default App
