@@ -2,12 +2,17 @@ import { useEffect, useState } from "react"
 import CountryCard from "./Components/CountryCard"
 import Header from "./Components/Header"
 import Filter from "./Components/Filter";
+import ReactPaginate from 'react-paginate';
+import SearchBar from "./Components/SearchBar";
+import "./App.css"
+import SearchResult from "./Components/SearchResult";
 
 function App() {
 
   const [Countries, setCountries]=useState([]);
   let [filterText, setFilterText]=useState("Select by Region");
-
+  const [result,setResult]=useState([]);
+  const pageCount=10;
   const itemsPerPage=8;
 
   let filteredCountries= Countries.filter((country)=>{
@@ -48,16 +53,42 @@ function App() {
   function onFilteredValueSelected(filteredValue){
     setFilterText(filteredValue);
   }
- 
+
+  function handlePageClick(data) // pagination handeling
+  {
+    console.log(data.selected);
+  }
   return (
     <>
     <Header/>
-    <Filter filteredValueSelected={onFilteredValueSelected}/>
     <div className="container">
+      <div className="top">
+      <Filter filteredValueSelected={onFilteredValueSelected}/>
+      <SearchBar setResults={setResult}/>
+      </div>
+      {result.slice(0,3).map(country=><SearchResult countryInfo={country} key={country.name.common}/>)}
       <div className="row">
       {filteredCountries.map(country=><CountryCard countryInfo={country} key={country.name.common}/>)}
       </div>
     </div>
+    {/* <ReactPaginate breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={2}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+        containerClassName={'pagination justify-content-center'}
+        pageClassName={'page-item'}
+        pageLinkClassName={'page-link'}
+        previousClassName={'page-item'}
+        previousLinkClassName={'page-link'}
+        nextClassName={'page-item'}
+        nextLinkClassName={'page-link'}
+        breakClassName={'page-item'}
+        breakLinkClassName={'page-link'}
+        activeClassName={'active'}
+        /> */}
     </>
   )
 }
