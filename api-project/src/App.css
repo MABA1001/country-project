@@ -5,6 +5,7 @@
 }
 body{
     background-color: rgb(236, 236, 236);
+    height: 100vh;
 }
 .top{
     display: flex;
@@ -15,22 +16,40 @@ body{
     --bs-gutter-x: -0.5rem;
 }
 
-.pagination{
+/* Add these styles to your existing styles.css or create a new CSS file */
+
+.pagination {
     display: flex;
-    padding: 10px;
     justify-content: center;
-    margin: 15px 0;
-    color:blue;
-}
-
-.pagination>span{
-    padding: 10px;
-    border: 1px solid grey;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-button {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: none;
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 16px;
     cursor: pointer;
-   
-}
+    transition: background-color 0.2s;
+    border-radius: 5px;
+  }
+  
+  .pagination-button.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .pagination-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  /* Optional: Add hover effect to the pagination buttons */
+  .pagination-button:not(:disabled):hover {
+    background-color: #ddd;
+  }
+  
 
-.active{
-    background-color: blue;
-    color:white;
-}

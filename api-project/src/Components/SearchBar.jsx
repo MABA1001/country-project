@@ -15,7 +15,7 @@ export default function SearchBar({setResults}) {
         fetchData(value);
     }
   return (
-    <div class="container">
+    <div class="container" style={{padding:"5px"}} >
     <div class="row height d-flex justify-content-right align-items-right">
       <div class="col-md-5" style={{marginLeft:"51%"}}>
         <div class="search">
