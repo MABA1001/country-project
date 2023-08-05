@@ -15,7 +15,7 @@ const CardDetails = (props) => {
         <div className={toggle ? "details dark":"details"}>
           <div className='card card-d'>
             <button className='close-button' onClick={clickHandeler}>
-              <AiFillCloseCircle size={30} />
+              <AiFillCloseCircle size={30}  />
             </button>
             <div className='details-content'>
               <div className='details-image'>

@@ -20,9 +20,9 @@
     max-width: 600px;
     padding: 20px;
     border: 2px solid black;
-    background-color: #006466;
+    background-color: #0c1821;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: #272640;
+    color: white;
   }
   
   .close-button {
@@ -32,6 +32,7 @@
     background: none;
     border: none;
     cursor: pointer;
+    color: white;
   }
   
   .details-content {
@@ -63,7 +64,7 @@
   .list-group-item {
     margin-bottom: 5px;
     font-size: 16px;
-    background-color: #006466;
-    color: #272640;
+    background-color: #0c1821;
+    color: white;
   }
   

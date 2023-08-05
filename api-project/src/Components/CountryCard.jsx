@@ -14,10 +14,10 @@ function CountryCard(props) {
       <div className="card-body">
         <h5 className="card__title">{props.countryInfo.name.common}</h5>
         <p className="card__text">
-          <ul>
-            <li>Capital: {props.countryInfo.capital}</li>
-            <li>Region={props.countryInfo.region}</li>
-            <li>Population={props.countryInfo.population}</li>
+          <ul  >
+            <li className={toggle?"darkish":null}>Capital: <span className='info1'>{props.countryInfo.capital}</span></li>
+            <li className={toggle?"darkish":null}>Region:  <span className='info2'>{props.countryInfo.region}</span></li>
+            <li className={toggle?"darkish":null}>Population: <span className='info3'>{props.countryInfo.region}</span></li>
           </ul>
         </p>
       </div>

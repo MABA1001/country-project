@@ -1,6 +1,7 @@
 .card{
     cursor: pointer;
     border: none;
+    background-color: #ffd6ff;
 }
 
 .card:hover{
@@ -10,5 +11,27 @@
 
 .darkCountry{
     background:#282f44;
-    color: #F6F7F9;
+    color: #F6F7F9 !important;
+}
+
+li{
+    list-style: none;
+    color: black;
+    font-weight: 600;
+}
+.info1{
+    margin-left: 17%;
+}
+.info2{
+    margin-left: 18%;
+}
+.info3{
+    margin-left: 5%;
+}
+
+h5{
+    font-weight: 600;
+}
+.darkish{
+    color:white;
 }
