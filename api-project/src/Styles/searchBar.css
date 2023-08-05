@@ -1,0 +1,9 @@
+.darkBar{
+    background-color: #343A46 !important;
+    color: white !important;
+    border: 2px solid white;
+}
+
+.darkBar::placeholder{
+    color: white;
+}

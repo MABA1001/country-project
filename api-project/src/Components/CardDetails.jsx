@@ -1,16 +1,18 @@
 import React from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import '../Styles/details.css';
+import { ThemeContext } from "./ThemeContext";
+
 
 const CardDetails = (props) => {
   function clickHandeler() {
     props.crossClicked(false);
   }
-
+  const { toggle } = React.useContext(ThemeContext);
   return (
     <>
       {props.clickedCountryDetails ? (
-        <div className='details'>
+        <div className={toggle ? "details dark":"details"}>
           <div className='card card-d'>
             <button className='close-button' onClick={clickHandeler}>
               <AiFillCloseCircle size={30} />
@@ -22,7 +24,7 @@ const CardDetails = (props) => {
                   alt='Country Flag'
                 />
               </div>
-              <div className='details-info'>
+              <div className='details-info' >
                 <h2>{props.clickedCountryDetails.name.common}</h2>
                 <ul className='list-group list-group-flush'>
                   <li className='list-group-item'>

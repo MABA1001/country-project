@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { ThemeContext } from "./ThemeContext";
+import "../Styles/searchBar.css"
 
 export default function SearchBar({setResults}) {
     const [input, setInput]=useState("");
@@ -14,18 +16,15 @@ export default function SearchBar({setResults}) {
         setInput(value);
         fetchData(value);
     }
+    const { toggle} = React.useContext(ThemeContext);
   return (
-    <div class="container" style={{padding:"5px"}} >
-    <div class="row height d-flex justify-content-right align-items-right">
-      <div class="col-md-5" style={{marginLeft:"51%"}}>
-        <div class="search">
-          <i class="fa fa-search"></i>
-          <input type="text" class="form-control" value={input} placeholder="Search Country name" 
+    
+      <div className="col-md-5" >
+        <div className="search" style={{height: '100%'}}>
+          <input style={{height: '100%'}} type="text" className={toggle ? "darkBar form-control":"form-control"} value={input} placeholder="Search Country name" 
           onChange={(e)=>handleChange(e.target.value)}/>
         </div>
       </div>
-      
-    </div>
-</div>
+
   )
 }
